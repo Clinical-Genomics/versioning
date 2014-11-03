@@ -4,7 +4,7 @@
 # Args
 #    script (str, optional): name (and path to) script. When absent, takes the $0. Symlinks will be automatically resolved.
 # Return (str): a semver of the scripts. When the script is not versioned, 0.0.0 is returned.
-get_version() {
+getversion() {
     if [[ -z $1 ]]; then
         SCRIPTNAME=$1
     else
