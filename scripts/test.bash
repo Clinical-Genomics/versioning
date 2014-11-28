@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source log.bash
+source $(dirname $(readlink -n -m $0))/log.bash
 VERSION=$(getversion)
 log "TEST" "Print version: $VERSION"
 

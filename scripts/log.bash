@@ -6,14 +6,14 @@
 # Return (str): a semver of the scripts. When the script is not versioned, 0.0.0 is returned.
 getversion() {
     if [[ -z $1 ]]; then
-        SCRIPTNAME=`basename "$0"`
+        SCRIPTNAME=$(basename "$0")
     else
         SCRIPTNAME=$1
     fi
 
     CWD=`pwd`
-    cd $(dirname `readlink -n -m $SCRIPTNAME`)
-    VERSION=`(git tag | tail -1) 2> /dev/null`
+    cd $(dirname $(readlink -n -m $SCRIPTNAME))
+    VERSION=$((git describe | tail -1) 2> /dev/null)
     if [[ -z $VERSION ]]; then
         VERSION='0.0.0' # not versioned yet!
     fi
@@ -48,7 +48,7 @@ error() {
 # Echo's the module name based on the input parameters of 'log()' or 'error()'
 getmodulename() {
     if [[ -z $2 ]]; then
-        MODULE=`basename "$0"`
+        MODULE=$(basename "$0")
     else
         MODULE=$1
     fi
