@@ -7,6 +7,6 @@ if [[ $# -ne 1 ]]; then
     exit 1
 fi
 
-source $(dirname $(readlink -n -m "$0"))/log.bash
+source log.bash
 
 echo $(getversion)

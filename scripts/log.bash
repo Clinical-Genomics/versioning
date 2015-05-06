@@ -13,7 +13,7 @@ getversion() {
 
     CWD=`pwd`
     cd $(dirname $(readlink -n -m $SCRIPTNAME))
-    VERSION=$((git describe | tail -1) 2> /dev/null)
+    VERSION=$((git describe --tags | tail -1) 2> /dev/null)
     if [[ -z $VERSION ]]; then
         VERSION='0.0.0' # not versioned yet!
     fi
