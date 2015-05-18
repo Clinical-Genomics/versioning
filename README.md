@@ -6,15 +6,21 @@ We are using semantic versioning to give script/programs version numbers: http:/
 
 ## Usage
 
-This is helpful for logging the right version of the script.
+### Getting the script version number for logging
+
+```bash
+$ ./getscriptversion.sh yourscript
+```
+
+### Getting the script version number from within a script
 
 e.g.
 
 ```bash
 #!/bin/bash
 
-source scripts/log.bash
-
-VERSION=$(get_version)
-log "TEST" "VERSION $VERSION"
+source $(dirname $(readlink -n -m $0))/log.bash
+VERSION=$(getversion)
+log $0 "Current version: $VERSION"
 ```
+
